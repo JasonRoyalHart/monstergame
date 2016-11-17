@@ -21,6 +21,8 @@ namespace MonsterGame
             int damage = 5;
             int monsterhealth = 20;
             int monsterdamage = 3;
+            int level = 1;
+            int xp = 0;
             Random random = new Random();
             while (alive)
             {
@@ -78,6 +80,15 @@ namespace MonsterGame
                                 if (monsterhealth < 1)
                                 {
                                     Console.WriteLine("You have slain the monster!");
+                                    xp += 10;
+                                    Console.WriteLine("You gained 10 experience points.");
+                                    if (xp >= (level*level) * 10)
+                                    {
+                                        level += 1;
+                                        health = 10 + (level * 10);
+                                        damage += 1;
+                                        Console.WriteLine("You have gained enough experience to reach level {0}", level);
+                                    }
                                     monster = false;
                                 }
                             }
